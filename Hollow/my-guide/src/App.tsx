@@ -1,39 +1,62 @@
 // src/App.tsx
 import { useEffect, useMemo, useState, type JSX } from "react";
-import { AREAS } from "./data/areas";
-import type { Area } from "./types";
+import { Link } from "react-router-dom";
 import AreaList from "./components/AreaList";
 import AreaDetail from "./components/AreaDatail";
 import MapModal from "./components/ModalMap";
-import { Link } from "react-router-dom";
-import "./index.css";
+import {AREAS} from "./data/areas"; // seu arquivo com todas as áreas (Hollow)
+import type { Area } from "./types";
+import "./index.css"; // ou "./App.css" / seu css principal
 
 export default function App(): JSX.Element {
   const [query, setQuery] = useState<string>("");
-  const [selectedId, setSelectedId] = useState<string | null>(AREAS[0]?.id ?? null);
+  const [showSecondary, setShowSecondary] = useState<boolean>(false);
 
-  const [mapOpen, setMapOpen] = useState(false);
-  const [mapSrc, setMapSrc] = useState<string | null>(null);
-  const [mapTitle, setMapTitle] = useState<string | undefined>(undefined);
+  // Separa listas primaria / secundaria a partir de AREAS
+  const primaryAreas = useMemo(() => AREAS.filter((a) => !a.secondary), []);
+  const secondaryAreas = useMemo(() => AREAS.filter((a) => !!a.secondary), []);
 
+  const baseAreas = showSecondary ? secondaryAreas : primaryAreas;
+
+  // selectedId inicial com base na lista ativa
+  const [selectedId, setSelectedId] = useState<string | null>(baseAreas[0]?.id ?? null);
+
+  // Ao trocar entre primary/secondary ajusta seleção (escolhe primeiro se atual não existir)
   useEffect(() => {
-    // manter seleção coerente
-  }, []);
-
-  const filtered = useMemo(() => {
-    if (!query) return AREAS;
-    const q = query.toLowerCase();
-    return AREAS.filter(
-      (a) => a.name.toLowerCase().includes(q) || a.description.toLowerCase().includes(q)
-    );
-  }, [query]);
-
-  useEffect(() => {
-    if (!selectedId && filtered.length) {
-      setSelectedId(filtered[0].id);
-    } else if (selectedId && !filtered.some((f) => f.id === selectedId)) {
-      setSelectedId(filtered[0]?.id ?? null);
+    if (!selectedId && baseAreas.length) setSelectedId(baseAreas[0].id);
+    else if (selectedId && !baseAreas.some((b) => b.id === selectedId)) {
+      setSelectedId(baseAreas[0]?.id ?? null);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showSecondary]);
+
+  // Filtragem por query (nome, descrição, bosses)
+  const filtered = useMemo(() => {
+    if (!query) return baseAreas;
+    const q = query.toLowerCase();
+    return baseAreas.filter((a) => {
+      const nameMatch = a.name.toLowerCase().includes(q);
+
+      let descText = "";
+      if (Array.isArray(a.description)) descText = a.description.join(" ").toLowerCase();
+      else if (typeof a.description === "string") descText = a.description.toLowerCase();
+
+      const descMatch = descText.includes(q);
+
+      const bossText = (a.bosses ?? [])
+        .map((b) => (typeof b === "string" ? b : b.name))
+        .join(" ")
+        .toLowerCase();
+      const bossMatch = bossText.includes(q);
+
+      return nameMatch || descMatch || bossMatch;
+    });
+  }, [query, baseAreas]);
+
+  // Garante selectedId válido quando filtered muda
+  useEffect(() => {
+    if (!selectedId && filtered.length) setSelectedId(filtered[0].id);
+    else if (selectedId && !filtered.some((f) => f.id === selectedId)) setSelectedId(filtered[0]?.id ?? null);
   }, [filtered, selectedId]);
 
   const selected = useMemo(() => filtered.find((a) => a.id === selectedId) ?? null, [filtered, selectedId]);
@@ -48,42 +71,57 @@ export default function App(): JSX.Element {
     if (currentIndex >= 0 && currentIndex < filtered.length - 1) setSelectedId(filtered[currentIndex + 1].id);
   };
 
+  const [mapOpen, setMapOpen] = useState(false);
+  const [mapSrc, setMapSrc] = useState<string | null>(null);
+  const [mapTitle, setMapTitle] = useState<string | undefined>(undefined);
+
   function openMap(src: string | null, title?: string) {
     if (!src) return;
     setMapSrc(src);
     setMapTitle(title);
     setMapOpen(true);
   }
-
   function closeMap() {
     setMapOpen(false);
     setMapSrc(null);
     setMapTitle(undefined);
   }
 
+  // Toggle que alterna entre prime/secondary (limpa busca opcionalmente)
+  function toggleSecondary() {
+    setShowSecondary((s) => {
+      const next = !s;
+      setQuery(""); // opcional: limpa busca quando troca (remove se não quiser)
+      return next;
+    });
+  }
+
   return (
     <div className="app">
       <header className="header">
         <div>
-          <div className="title">Guia: Hollow Knight</div>
+          <div className="title">Hollow Knight</div>
         </div>
 
-        {/* botão para Silksong no canto direito do header */}
         <div style={{ marginLeft: "auto", display: "flex", gap: 8 }}>
           <Link to="/silksong" style={{ textDecoration: "none" }}>
-            <button
-              className="map-btn"
-              title="Ir para o guia de Silksong"
-              style={{ background: "linear-gradient(90deg,#6f4bb0,#5b3fb2)", color: "#fff" }}
-            >
+            <button className="map-btn" title="Abrir guia Silksong">
               Silksong
             </button>
           </Link>
         </div>
       </header>
 
-
-      <AreaList areas={filtered} query={query} setQuery={setQuery} selectedId={selectedId} onSelect={onSelect} onOpenMap={openMap} />
+      <AreaList
+        areas={filtered}
+        query={query}
+        setQuery={setQuery}
+        selectedId={selectedId}
+        onSelect={onSelect}
+        onOpenMap={openMap}
+        onToggleSecondary={toggleSecondary}
+        isSecondary={showSecondary}
+      />
 
       <AreaDetail area={selected} onPrev={goPrev} onNext={goNext} onOpenMap={openMap} />
 

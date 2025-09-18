@@ -1,3 +1,4 @@
+// src/components/AreaList.tsx
 
 import type { Area } from "../types";
 
@@ -7,19 +8,29 @@ type Props = {
   setQuery: (q: string) => void;
   selectedId: string | null;
   onSelect: (a: Area) => void;
-  onOpenMap: (src: string | null, title?: string) => void;
+  onOpenMap?: (src: string | null, title?: string) => void;
+  onToggleSecondary: () => void;
+  isSecondary: boolean;
 };
 
-export default function AreaList({ areas, query, setQuery, selectedId, onSelect, onOpenMap }: Props) {
+export default function AreaList({
+  areas,
+  query,
+  setQuery,
+  selectedId,
+  onSelect,
+  onOpenMap,
+  onToggleSecondary,
+  isSecondary,
+}: Props) {
   return (
     <aside className="side" aria-label="Lista de áreas">
-      {/* Header interno: Título + botão Mapa Geral no lugar do 'Guia' */}
       <div className="side-header">
         <div className="title-left">Áreas</div>
-        <div style={{ marginLeft: "auto"}}>
+        <div style={{ marginLeft: "auto", display: "flex", gap: 8 }}>
           <button
             className="map-btn"
-            onClick={() => onOpenMap("/imagens/Mapas/Mapa-geral.jpg", "Mapa Geral")}
+            onClick={() => onOpenMap && onOpenMap("/imagens/Mapas/Mapa-geral.jpg", "Mapa Geral")}
             title="Abrir mapa geral"
           >
             Mapa Geral
@@ -27,51 +38,46 @@ export default function AreaList({ areas, query, setQuery, selectedId, onSelect,
         </div>
       </div>
 
-      <div className="search" style={{ marginBottom: 10 }}>
-        <input
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Buscar..."
-          aria-label="buscar áreas"
-        />
-        <button onClick={() => setQuery("")}>Limpar</button>
+      <div className="search">
+        <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Buscar..." />
+        <button onClick={() => setQuery("")} style={{ background: "var(--violet)" }}>
+          Limpar
+        </button>
       </div>
 
-      <nav className="areas-list" aria-label="Navegação de áreas">
-        {areas.map((area) => (
+      <div className="areas-list" role="list">
+        {areas.map((a) => (
           <div
-            key={area.id}
-            className={`area-item ${selectedId === area.id ? "active" : ""}`}
-            onClick={() => onSelect(area)}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") onSelect(area);
-            }}
+            key={a.id}
+            className={`area-item ${selectedId === a.id ? "active" : ""}`}
+            onClick={() => onSelect(a)}
+            role="listitem"
+            style={{ cursor: "pointer" }}
           >
-            <img
-              src={area.image}
-              alt={area.name}
-              className="area-thumb"
-              onError={(e) => {
-                (e.currentTarget as HTMLImageElement).src = `https://via.placeholder.com/320x180?text=${encodeURIComponent(
-                  area.name
-                )}`;
-              }}
-            />
+            <img src={a.image} alt={a.name} className="area-thumb" />
             <div className="area-meta">
-              <div className="area-name">{area.name}</div>
-              <div className="area-sub">{area.bosses?.slice(0, 2).join(" • ")}</div>
+              <div className="area-name">{a.name}</div>
             </div>
           </div>
         ))}
-      </nav>
 
-      <div style={{ height: 14 }} />
-
-      <div style={{ color: "var(--muted)", fontSize: 13 }}>
-        Dica: clique em uma área para ver detalhes à direita.
+        {areas.length === 0 && <div style={{ color: "var(--muted)", padding: "10px 6px" }}>Nenhuma área encontrada.</div>}
       </div>
+
+      <div className="areas-footer">
+  <button
+    onClick={onToggleSecondary}
+    className={`secondary-toggle ${isSecondary ? "active" : ""}`}
+    aria-pressed={isSecondary}
+    title={isSecondary ? "Mostrar áreas principais" : "Mostrar áreas secundárias"}
+  >
+    {isSecondary ? "Mostrar áreas principais" : "Áreas secundárias"}
+  </button>
+
+  <div className="areas-tip">
+    Dica: clique em uma área para ver detalhes à direita.
+  </div>
+</div>
     </aside>
   );
 }

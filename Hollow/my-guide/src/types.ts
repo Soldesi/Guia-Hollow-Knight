@@ -1,16 +1,22 @@
-// src/types.ts
+export type NPC = {
+  name: string;
+  description?: string | string[];
+  image?: string;
+};
+
 export type Boss = {
   name: string;
-  description?: string; // descrição em português (pode usar \n\n para parágrafos)
-  image?: string; // opcional - caminho da thumb do boss
+  description?: string | string[];
+  image?: string;
 };
 
 export type Area = {
   id: string;
   name: string;
-  image: string;
+  image?: string;
   map?: string;
   description?: string | string[];
-  // suporta ambos: ["Boss A", ...] ou [{name, description}, ...]
-  bosses?: Array<string | Boss>;
+  bosses?: Boss[];
+  npcs?: NPC[];
+  secondary?: boolean;   // <--- adiciona isto
 };

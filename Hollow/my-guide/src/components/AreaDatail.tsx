@@ -1,7 +1,8 @@
 // src/components/AreaDetail.tsx
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Area } from "../types";
 import BossModal from "./BossModal";
+import NPCModal from "./NPCmodal";
 
 type Props = {
   area: Area | null;
@@ -31,16 +32,31 @@ function renderParagraphs(desc?: string | string[]) {
 export default function AreaDetail({ area, onPrev, onNext, onOpenMap }: Props) {
   const [openBossIndex, setOpenBossIndex] = useState<number | null>(null);
 
+  // NPC modal state
+  const [npcOpen, setNpcOpen] = useState(false);
+  const [npcStart, setNpcStart] = useState<number>(0);
+
+  useEffect(() => {
+    // quando a área muda, feche modais abertos
+    setOpenBossIndex(null);
+    setNpcOpen(false);
+    setNpcStart(0);
+  }, [area?.id]);
+
   if (!area) {
     return (
       <section className="detail" aria-label="Detalhes da área">
-        <div style={{ fontSize: 18, color: "var(--muted)" }}>Selecione uma área à esquerda para ver detalhes.</div>
+        <div style={{ fontSize: 18, color: "var(--muted)" }}>
+          Selecione uma área à esquerda para ver detalhes.
+        </div>
       </section>
     );
   }
 
   const bosses = area.bosses ?? [];
+  const npcs = (area as any).npcs ?? []; // se você tipou Area com npcs, remova o any
 
+  /* ---------- Boss modal handlers ---------- */
   function openBossAt(index: number) {
     if (!bosses || bosses.length === 0) return;
     const idx = Math.max(0, Math.min(index, bosses.length - 1));
@@ -58,6 +74,19 @@ export default function AreaDetail({ area, onPrev, onNext, onOpenMap }: Props) {
   function nextBoss() {
     if (openBossIndex === null) return;
     if (openBossIndex < bosses.length - 1) setOpenBossIndex(openBossIndex + 1);
+  }
+
+  /* ---------- NPC modal handlers ---------- */
+  function openNPCAt(index = 0) {
+    if (!npcs || npcs.length === 0) return;
+    const idx = Math.max(0, Math.min(index, npcs.length - 1));
+    setNpcStart(idx);
+    setNpcOpen(true);
+  }
+
+  function closeNPC() {
+    setNpcOpen(false);
+    setNpcStart(0);
   }
 
   return (
@@ -82,15 +111,9 @@ export default function AreaDetail({ area, onPrev, onNext, onOpenMap }: Props) {
               {onPrev && (
                 <button
                   onClick={onPrev}
-                  style={{
-                    background: "transparent",
-                    border: "1px solid rgba(255,255,255,0.04)",
-                    padding: "8px 10px",
-                    borderRadius: 8,
-                    cursor: "pointer",
-                    color: "var(--muted)",
-                  }}
+                  className="icon-btn icon-btn--small"
                   aria-label="Área anterior"
+                  title="Área anterior"
                 >
                   ◀
                 </button>
@@ -98,15 +121,9 @@ export default function AreaDetail({ area, onPrev, onNext, onOpenMap }: Props) {
               {onNext && (
                 <button
                   onClick={onNext}
-                  style={{
-                    background: "transparent",
-                    border: "1px solid rgba(255,255,255,0.04)",
-                    padding: "8px 10px",
-                    borderRadius: 8,
-                    cursor: "pointer",
-                    color: "var(--muted)",
-                  }}
+                  className="icon-btn icon-btn--small"
                   aria-label="Próxima área"
+                  title="Próxima área"
                 >
                   ▶
                 </button>
@@ -118,38 +135,37 @@ export default function AreaDetail({ area, onPrev, onNext, onOpenMap }: Props) {
             {renderParagraphs(area.description)}
           </div>
 
-          {/* BOTÕES: abrir modal de bosses / mapa da área */}
+          {/* BOTÕES: abrir modal de bosses / npcs / mapa da área */}
           <div style={{ marginTop: 16, display: "flex", alignItems: "center", gap: 12 }}>
-            {/* Botão principal: ao clicar abre modal direto no primeiro boss */}
+            {/* Bosses */}
             <button
               onClick={() => openBossAt(0)}
               disabled={bosses.length === 0}
-              style={{
-                padding: "8px 12px",
-                borderRadius: 8,
-                border: "1px solid rgba(255,255,255,0.06)",
-                background: bosses.length ? "var(--accent)" : "transparent",
-                color: bosses.length ? "#071226" : "var(--muted)",
-                fontWeight: 800,
-                cursor: bosses.length ? "pointer" : "not-allowed",
-              }}
+              className="btn-base bosses-btn"
+              aria-disabled={bosses.length === 0}
+              title="Abrir modal do primeiro boss"
             >
               Bosses
             </button>
 
+            {/* NPCs */}
+            <button
+              onClick={() => openNPCAt(0)}
+              disabled={npcs.length === 0}
+              className="btn-base npc-btn"
+              aria-disabled={npcs.length === 0}
+              title="Abrir NPCs"
+            >
+              NPCs
+            </button>
+
+            {/* Mapa da área (empurra para direita) */}
             {area.map && (
               <button
                 onClick={() => onOpenMap && onOpenMap(area.map ?? null, `${area.name} — mapa`)}
-                style={{
-                  marginLeft: "auto",
-                  padding: "6px 10px",
-                  borderRadius: 8,
-                  border: "1px solid rgba(255,255,255,0.06)",
-                  background: "var(--accent)",
-                  color: "#071226",
-                  fontWeight: 800,
-                  cursor: "pointer",
-                }}
+                className="btn-base area-map-btn"
+                style={{ marginLeft: "auto" }}
+                title={`${area.name} — mapa`}
               >
                 Mapa da Área
               </button>
@@ -158,6 +174,7 @@ export default function AreaDetail({ area, onPrev, onNext, onOpenMap }: Props) {
 
           <div className="hint" style={{ marginTop: 18 }}>
             Clique em <strong>Bosses</strong> para abrir o modal com imagens e informações.
+            {" "}Use <strong>NPCs</strong> para ver personagens e diálogos da área.
           </div>
         </div>
       </section>
@@ -171,6 +188,9 @@ export default function AreaDetail({ area, onPrev, onNext, onOpenMap }: Props) {
         onPrev={prevBoss}
         onNext={nextBoss}
       />
+
+      {/* Modal de NPCs */}
+      <NPCModal open={npcOpen} npcs={npcs} startIndex={npcStart} onClose={closeNPC} />
     </>
   );
 }

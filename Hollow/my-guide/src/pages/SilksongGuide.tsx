@@ -76,7 +76,7 @@ export default function SilksongGuide(): JSX.Element {
     <div className="app silksong-body">
       <header className="header silksong-panel" style={{ alignItems: "center" }}>
         <div>
-          <div className="title silksong-title">Guia: Silksong</div>
+          <div className="title silksong-title">Silksong</div>
         </div>
 
         <div style={{ marginLeft: "auto", display: "flex", gap: 8 }}>
@@ -94,8 +94,9 @@ export default function SilksongGuide(): JSX.Element {
         setQuery={setQuery}
         selectedId={selectedId}
         onSelect={onSelect}
-        onOpenMap={openMap}
-      />
+        onOpenMap={openMap} onToggleSecondary={function (): void {
+          throw new Error("Function not implemented.");
+        } } isSecondary={false}      />
 
       <AreaDetail area={selected} onPrev={goPrev} onNext={goNext} onOpenMap={openMap} />
 
