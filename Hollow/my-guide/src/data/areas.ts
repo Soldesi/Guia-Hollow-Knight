@@ -11,10 +11,10 @@ export const AREAS: Area[] = [
         secondary: undefined,
         npcs: [
             {
-                name: "Elderbug",
+                name: "Inseto Ancião",
                 description:
-                    "Elderbug é o NPC amigável que dá as boas-vindas em Dirtmouth.\n\nConhecido por seus comentários curiosos e conselhos práticos, Elderbug costuma indicar caminhos, contar boatos do reino e oferecer pequenas pistas para iniciantes. É uma figura de apoio — bom lugar para ouvir rumores e recapitular a história de Hallownest.",
-                image: "/imagens/NPCs/Elderbug.jpg"
+                    "Inseto Ancião é o NPC amigável que dá as boas-vindas em Dirtmouth.\n\nConhecido por seus comentários curiosos e conselhos práticos, 0 Ancião costuma indicar caminhos, contar boatos do reino e oferecer pequenas pistas para iniciantes. É uma figura de apoio — bom lugar para ouvir rumores e recapitular a história de Hallownest.",
+                image: "/imagens/NPCs/Anciao.jpg"
             },
             {
                 name: "Cornifer",
@@ -33,7 +33,13 @@ export const AREAS: Area[] = [
                 description:
                     "Iselda, frequentemente vista cuidando das mercadorias e do estande de mapas quando ele está ausente.\n\nEla é atenciosa e prática — ajuda viajantes com informações sobre onde Cornifer esteve, vende mapas remanescentes e dá dicas discretas sobre rotas e segredos locais. Útil para quem procura mapas ou quer saber onde encontrar o cartógrafo.",
                 image: "/imagens/NPCs/Iselda.jpg"
-            }
+            },
+            {
+                name: "O Último Besouro",
+                description:
+                    "O Último Besouro é uma figura melancólica — um velho guerreiro lembrando dos dias de glória dos besouros.\n\nEle fala em tons nostálgicos, guarda relíquias e às vezes desafia aventureiros com testes de bravura ou pedidos para recuperar objetos do seu passado. Bom local para ouvir contos do reino e obter recompensas simbólicas por ajudar a preservar memórias esquecidas.",
+                image: "/imagens/NPCs/OUltimoBesouro.jpg"
+            },
         ],
     },
     {
@@ -78,6 +84,20 @@ export const AREAS: Area[] = [
                 description: "Mini-boss que costuma se camuflar como um grande arbusto em áreas verdes. Ao ser provocado revela-se e executa cargas rápidas e pulos que esmagam o solo.\n\nO combate pede esquiva das cargas e golpes precisos nos momentos de pouso. Dica: role para o lado na preparação da investida e use ataques rápidos durante a recuperação para evitar se expor.",
                 image: "/imagens/Bosses/Batedor.jpg"
             }
+        ],
+        npcs: [
+            {
+                name: "Caçador",
+                description:
+                    "O Caçador é um especialista em rastreamento e combate que conhece bem as criaturas do reino.\n\nEle oferece contratos, desafios de caça e relatórios sobre monstros perigosos — completar suas tarefas costuma trazer equipamentos e troféus. O Caçador também dá aulas práticas sobre como lidar com inimigos específicos, tornando-o um recurso valioso para aventureiros que querem melhorar suas habilidades.",
+                image: "/imagens/NPCs/Cacador.jpg"
+            },
+            {
+                name: "Unn",
+                description:
+                    "Unn é uma presença enigmática e maternal das áreas fungais — calma e protetora.\n\nEla compartilha sabedoria simples sobre o equilíbrio dos ambientes e pode apontar caminhos seguros através de zonas instáveis. Conversas com Unn costumam ser curtas, mas carregadas de intuição; ótimo NPC para dicas de navegação e respeito à fauna local.",
+                image: "/imagens/NPCs/Unn.jpg"
+            },
         ],
         secondary: undefined
     },

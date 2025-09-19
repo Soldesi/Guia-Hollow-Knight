@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import type { Area } from "../types";
 import BossModal from "./BossModal";
-import NPCModal from "./NPCmodal";
+import NPCModal from "./NPCModal";
 
 type Props = {
   area: Area | null;
