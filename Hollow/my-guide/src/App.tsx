@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useState, type JSX } from "react";
 import { Link } from "react-router-dom";
 import AreaList from "./components/AreaList";
-import AreaDetail from "./components/AreaDatail";
+import AreaDetail from "./components/AreaDetail";
 import MapModal from "./components/ModalMap";
 import {AREAS} from "./data/areas"; // seu arquivo com todas as áreas (Hollow)
 import type { Area } from "./types";
@@ -123,7 +123,17 @@ export default function App(): JSX.Element {
         isSecondary={showSecondary}
       />
 
-      <AreaDetail area={selected} onPrev={goPrev} onNext={goNext} onOpenMap={openMap} />
+  <AreaDetail
+  area={selected}
+  onPrev={goPrev}
+  onNext={goNext}
+  onOpenMap={openMap}
+  onOpenArea={(id) => {
+    // ativa a lista de secundárias e seleciona a área clicada
+    setShowSecondary(true);
+    setSelectedId(id);
+  }}
+/>
 
       <MapModal open={mapOpen} src={mapSrc} title={mapTitle} onClose={closeMap} />
     </div>

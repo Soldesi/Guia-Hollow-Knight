@@ -34,6 +34,11 @@ export default function AreaList({
             title="Abrir mapa geral"
           >
             Mapa Geral
+            <img
+              src="/imagens/Mapas/Icone-mapa.jpg"
+              alt=""
+              style={{ width: "26px", height: "26px" }}
+            />
           </button>
         </div>
       </div>

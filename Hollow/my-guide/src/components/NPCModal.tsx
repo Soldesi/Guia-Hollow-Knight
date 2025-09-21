@@ -45,10 +45,6 @@ export default function NPCModal({ open, npcs = [], onClose }: Props): JSX.Eleme
             </div>
           ))}
         </div>
-
-        <div style={{ marginTop: "1rem", textAlign: "right" }}>
-          <button className="map-btn" onClick={onClose}>Fechar</button>
-        </div>
       </div>
     </div>
   );

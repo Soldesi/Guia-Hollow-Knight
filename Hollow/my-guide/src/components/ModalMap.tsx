@@ -29,7 +29,7 @@ export default function MapModal({ open, src, title, onClose }: Props) {
         style={{
           width: "min(900px, 94%)",
           maxHeight: "94%",
-          background: "linear-gradient(180deg, #071225, #0b2135)",
+          background: "linear-gradient(180deg, #130b3aff, #0f0830ff)",
           borderRadius: 12,
           padding: 12,
           boxShadow: "0 20px 60px rgba(0,0,0,0.6)",

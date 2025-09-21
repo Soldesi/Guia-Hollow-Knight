@@ -6,6 +6,7 @@ export const AREAS: Area[] = [
         id: "dirtmouth",
         name: "Dirtmouth",
         image: "/imagens/Areas/Dirtmouth.jpg",
+        map: "/imagens/Mapas/Dirtmouth-mapa.jpg",
         description: "Dirtmouth é a pacata vila à superfície que serve como portal e ponto de retorno para Hallownest.\n\nAqui o jogador encontra NPCs importantes, lojas e bancos para salvar o progresso — funcionando como hub seguro entre explorações. As conversas, rumores e pequenas missões encontradas em Dirtmouth ajudam a amarrar a história do reino e a guiar o jogador para as regiões iniciais.\n\nMesmo leve e serena, a vila carrega o peso da história de Hallownest: diálogos com personagens como Elderbug e Cornifer (o cartógrafo) revelam pistas valiosas e desbloqueiam opções de exploração.",
         bosses: [],
         secondary: undefined,
@@ -38,10 +39,24 @@ export const AREAS: Area[] = [
                 name: "O Último Besouro",
                 description:
                     "O Último Besouro é uma figura melancólica — um velho guerreiro lembrando dos dias de glória dos besouros.\n\nEle fala em tons nostálgicos, guarda relíquias e às vezes desafia aventureiros com testes de bravura ou pedidos para recuperar objetos do seu passado. Bom local para ouvir contos do reino e obter recompensas simbólicas por ajudar a preservar memórias esquecidas.",
-                image: "/imagens/NPCs/OUltimoBesouro.jpg"
+                image: "/imagens/NPCs/Besouro.jpg"
+            },
+            {
+                name: "Zote",
+                description:
+                    "Aqui Zote pode ser encontrado em Dirtmouth, após ser resgatado.\n\nEle passa o tempo todo reclamando, criticando os outros e contando histórias exageradas sobre sua suposta bravura.",
+                image: "/imagens/NPCs/Zote.jpg"
+            },
+            {
+                name: "Bretta",
+                description:
+                    "Bretta é uma jovem inseto tímida que vive em Hallownest. Após ser resgatada de uma situação perigosa, ela desenvolve uma admiração profunda pelo Cavaleiro.\n\nIngênua e romântica, Bretta fantasia sobre heróis e sonha com histórias de bravura, trazendo um tom leve e humano ao mundo sombrio do jogo.",
+                image: "/imagens/NPCs/Bretta.jpg"
             },
         ],
     },
+
+
     {
         id: "forgotten-crossroads",
         name: "Encruzilhada Esquecida",
@@ -58,10 +73,44 @@ export const AREAS: Area[] = [
                 name: "Mãe Mosca",
                 description: "Uma criatura volumosa encontrada em áreas úmidas e cavidades; protege filhotes e pode se tornar extremamente agressiva quando provocada.\n\nEm combate alterna momentos mais lentos com rajadas e investidas aéreas; em arenas especiais pode aparecer em conjunto com outras Mães Mosca.",
                 image: "/imagens/Bosses/Mae.jpg"
+            },
+        ],
+        secondary: undefined,
+        npcs: [
+            {
+                name: "Pai Larva",
+                description:
+                    "O Pai Larva é uma criatura gentil que vive na Encruzilhada Esquecida. Ele aguarda ansiosamente o retorno de suas larvas, presas em frascos por todo o Reino de Hallownest.\n\nAo resgatá-las, o Pai Larva recompensa o Cavaleiro com Geo e itens valiosos, demonstrando sua gratidão.",
+                image: "/imagens/NPCs/Pai_Larva.jpg"
+            },
+            {
+                name: "Quirrel",
+                description:
+                    "Quirrel é um viajante curioso e reflexivo, sempre em busca de propósito e histórias.\n\nGentil e um pouco enigmático, ele compartilha observações sobre lugares que já visitou e às vezes marca pontos relevantes no mapa. Conversar com Quirrel pode oferecer contexto histórico sobre Hallownest e pequenas pistas emocionais sobre locais importantes.",
+                image: "/imagens/NPCs/Quirrel.jpg"
+            },
+            {
+                name: "Sly — Inconsciente",
+                description:
+                    "Aqui Sly é encontrado desacordado em meio aos perigos de Hallownest.\n\nO pequeno comerciante parece indefeso e vulnerável, caído no chão, até que seja ajudado pelo Cavaleiro. Após esse encontro, ele retorna a Dirtmouth para abrir sua loja.",
+                image: "/imagens/NPCs/Sly_Infectado.jpg"
+            },
+            {
+                name: "Salubra",
+                description:
+                    "Salubra é uma curandeira excêntrica que vende talismãs e poções feitas com saberes antigos.\n\nEla oferece serviços de cura, encantamentos e conselhos sobre usos de itens místicos — ideal para quem precisa de um reforço antes de explorar áreas perigosas. Salubra costuma pedir pequenas tarefas em troca de suas receitas mais raras, e suas histórias revelam tradições das comunidades locais.",
+                image: "/imagens/NPCs/Salubra.jpg"
+            },
+            {
+                name: "Xamã Caracol",
+                description:
+                    "O Xamã Caracol é um velho sábio com conhecimento profundo sobre a natureza e magia.\n\nEle ensina feitiços e oferece bênçãos para os aventureiros, ajudando-os a superar desafios difíceis e a entender os mistérios do mundo em que vivem.",
+                image: "/imagens/NPCs/Xama.jpg"
             }
         ],
-        secondary: undefined
     },
+
+
     {
         id: "greenpath",
         name: "Caminho Verde",
@@ -98,9 +147,23 @@ export const AREAS: Area[] = [
                     "Unn é uma presença enigmática e maternal das áreas fungais — calma e protetora.\n\nEla compartilha sabedoria simples sobre o equilíbrio dos ambientes e pode apontar caminhos seguros através de zonas instáveis. Conversas com Unn costumam ser curtas, mas carregadas de intuição; ótimo NPC para dicas de navegação e respeito à fauna local.",
                 image: "/imagens/NPCs/Unn.jpg"
             },
+            {
+                name: "Zote — Caminho Verde",
+                description:
+                    "Aqui Zote é encontrado em grande perigo, enfrentando sozinho a Mãe Veno-mosca.\n\nApesar do risco, ele mantém seu orgulho e jeito arrogante, quase como se zombasse da situação. Após ser salvo pelo Cavaleiro, ele segue para Dirtmouth para contar suas exageradas aventuras.",
+                image: "/imagens/NPCs/Zote.jpg"
+            },
+            {
+                name: "Sheo",
+                description:
+                    "Sheo é um artista excêntrico e um vendedor de poções especiais.\n\nEle cria elixires únicos com efeitos variados, desde melhorias temporárias de combate até curiosos efeitos de transformação. Encontrá-lo pode ser um ponto de virada para aventureiros criativos.",
+                image: "/imagens/NPCs/Sheo.jpg"
+            },
         ],
         secondary: undefined
     },
+
+
     {
         id: "fungal-wastes",
         name: "Ermos Fúngicos",
@@ -112,26 +175,101 @@ export const AREAS: Area[] = [
             description: "Três guerreiros louva-a-deus que compõem uma das batalhas opcionais mais técnicas do jogo. Os padrões são rápidos, com combos coreografados e ataques em formação.\n\nA dificuldade vem da velocidade e da exigência de execução: pratique esquivas curtas e memorize os padrões (ataques com lâminas/lanças e sequências aéreas). Vencer libera passagem segura pela vila dos louva-a-deus.",
             image: "/imagens/Bosses/Lords.jpg"
         }],
+        npcs: [
+            {
+                name: "Come Pernas",
+                description:
+                    "Come Pernas é uma criatura furtiva que ronda passagens estreitas e trilhas secundárias.\n\nRápido e evasivo, costuma atrair a atenção de quem anda desprevenido; derrotá-lo pode revelar itens escondidos ou abrir pequenas rotas alternativas. Fique atento: ele reaparece em lugares onde os viajantes se sentem seguros demais.",
+                image: "/imagens/NPCs/Pernas.jpg"
+            },
+            {
+                name: "Cloth",
+                description:
+                    "Cloth é uma guerreira viajante que sonha em viver grandes aventuras em Hallownest.\n\nApesar de sua aparência robusta, é bondosa e demonstra coragem crescente ao longo da jornada. Ela busca provar seu valor enfrentando perigos e, em certos encontros, pode auxiliar o Cavaleiro em batalha.",
+                image: "/imagens/NPCs/Cloth.jpg"
+            },
+        ],
         secondary: undefined
     },
+
+
     {
         id: "city-of-tears",
         name: "Cidade das Lágrimas",
         image: "/imagens/Areas/Cidade.jpg",
         map: "/imagens/Mapas/Cidade-mapa.jpg",
         description: "A Cidade das Lágrimas é a vasta e melancólica capital de Hallownest, sempre banhada por chuva e envolta por arquitetura grandiosa.\n\nÉ uma área de transição crucial, com elevadores, salas urbanas cheias de inimigos e locais que concentram NPCs importantes, lojas e desafios de plataforma. A complexidade do mapa urbano inclui rotas longas, segredos subterrâneos e seções verticais que testam tanto a paciência quanto a navegação do jogador.\n\nVárias mecânicas de combate e upgrades surgem por aqui — além disso, a cidade abriga chefes e encontros que aprofundam a mitologia do reino.",
-        bosses: [],
+        bosses: [
+            {
+                name: "Mestre das Almas",
+                description:
+                    "O Mestre das Almas é uma figura enigmática e poderosa que habita o Santuário das Almas.\n\nCom vasto conhecimento em magia e manipulação espiritual, ele representa um grande desafio, usando feitiços complexos e ataques devastadores para testar os aventureiros.",
+                image: "/imagens/Bosses/Mestre.jpg"
+            },
+            {
+                name: "Guerreiro das Almas",
+                description:
+                    "O Guerreiro das Almas é um espírito persistente e agressivo, formado a partir de energia residual.\n\nEle surge em confrontos mágicos, usando feitiços ofensivos que exigem agilidade e reflexos rápidos dos jogadores para serem superados.",
+                image: "/imagens/Bosses/Guerreiro.jpg"
+            },
+            {
+                name: "Sentinelas",
+                description:
+                    "As Sentinelas são guardiãs implacáveis que protegem o acesso aos Sonhadores.\n\nAltamente disciplinadas, elas utilizam lanças afiadas e estratégias defensivas para impedir qualquer intruso de avançar. Enfrentá-las exige precisão e paciência.",
+                image: "/imagens/Bosses/Sentinelas.jpg"
+            },
+        ],
+        npcs: [
+            {
+                name: "Forjador de Ferrões",
+                description:
+                    "O Forjador de Ferrões é um ferreiro recluso que trabalha com espinhos, lâminas e ferrões.\n\nEncontrado em oficinas subterrâneas ou ao lado de forjas antigas, ele repara e reforça armas improvisadas, oferece melhorias simples ou troca serviços por materiais raros. Conversar com ele pode revelar pistas sobre onde encontrar minério especial e pequenas histórias sobre artesãos perdidos de Hallownest.",
+                image: "/imagens/NPCs/Forjador.jpg"
+            },
+            {
+                name: "Quirrel — Cidade das Lágrimas",
+                description:
+                    "Aqui Quirrel é encontrado observando a chuva das alturas.\n\nEle comenta sobre a beleza melancólica da cidade, refletindo sobre como a água moldou não só as construções, mas também a atmosfera de Hallownest.",
+                image: "/imagens/NPCs/Quirrel.jpg"
+            },
+            {
+                name: "Colecionador de Relíquias Lemm",
+                description:
+                    "Lemm é um colecionador meticuloso que valoriza itens antigos e relíquias raras.\n\nEle aparece em locais isolados oferecendo trocas vantajosas para quem possui itens difíceis de encontrar. Conversar com Lemm pode desbloquear recompensas únicas e segredos históricos.",
+                image: "/imagens/NPCs/Lemm.jpg"
+            },
+        ],
         secondary: undefined
     },
+
+
     {
         id: "royal-waterways",
         name: "Hidrovia Real",
         image: "/imagens/Areas/Hidrovia.jpg",
         map: "/imagens/Mapas/Hidrovia-mapa.jpg",
         description: "A Hidrovia Real é um labirinto de canais e galerias inundadas sob a Cidade das Lágrimas, com correntes, áreas alagadas e inimigos modificados pela água.\n\nA sensação é de exploração submersa: muitas rotas mesclam plataformas secas com corredores encharcados, e o jogador precisa gerenciar saltos e controle em telas que aparentam confundir a orientação. É um local ideal para encontrar inimigos que alteram seu padrão de ataque em espaços apertados e para descobrir passagens que conectam regiões profundas do mapa.\n\nAlém disso, a Hidrovia concentra histórias de degradação e mistério, com áreas que só se tornam acessíveis após obter certas habilidades.",
-        bosses: [],
+        bosses: [
+            {
+                name: "Defensor do Esterco",
+                description:
+                    "O Defensor do Esterco é um cavaleiro excêntrico, mas nobre, que guarda com orgulho as profundezas de Hallownest.\n\nEle luta com coragem e devoção, utilizando ataques baseados em esferas de esterco, sempre demonstrando um espírito honrado e determinado.",
+                image: "/imagens/Bosses/Defensor.jpg"
+            },
+            {
+                name: "Flukemarm",
+                description:
+                    "Flukemarm é uma criatura monstruosa e disforme que se esconde nas cavernas úmidas de Hallownest.\n\nEla gera constantemente inimigos menores, tornando o combate caótico e desafiador, enquanto sua presença inspira desconforto e repulsa.",
+                image: "/imagens/Bosses/Flukemarm.jpg"
+            }
+        ],
+        npcs: [
+
+        ],
         secondary: undefined
     },
+
+
     {
         id: "crystal-peak",
         name: "Pico de Cristal",
@@ -139,8 +277,18 @@ export const AREAS: Area[] = [
         map: "/imagens/Mapas/Cristal-mapa.jpg",
         description: "O Pico de Cristal é uma mina industrial repleta de pontes quebradiças, plataformas mecânicas e perigos ambientais como lasers e correntes de ar.\n\nA exploração requer ritmo e paciência: plataformas em movimento, mecanismos que forçam o jogador a dominar timing preciso e seções com projéteis. Visualmente, o local destaca cristais brilhantes e uma sensação de perigo metálico — recompensas para quem avançar incluem recursos e caminhos novos por dentro da montanha.\n\nChegar ao núcleo da mina significa encarar inimigos que disparam projéteis e chefes com padrões de ataque baseados em velocidade e espaço restrito.",
         bosses: [],
+        npcs: [
+            {
+                name: "Myla",
+                description:
+                    "Myla é uma mineira alegre que trabalha cantando nas profundezas da Encruzilhada Esquecida.\n\nCom seu canto suave, transmite uma sensação de esperança em meio à decadência de Hallownest. Contudo, como muitos de seu povo, ela está condenada pela infecção, tornando seu destino um dos mais tristes do reino.",
+                image: "/imagens/NPCs/Myla.jpg"
+            }
+        ],
         secondary: undefined
     },
+
+
     {
         id: "resting-grounds",
         name: "Terra do Descanso",
@@ -148,8 +296,18 @@ export const AREAS: Area[] = [
         map: "/imagens/Mapas/Descanso-mapa.jpg",
         description: "A Terra do Descanso é um santuário solene repleto de memoriais, rituais e locais de recolhimento — um ponto chave para a história e para encontros oníricos.\n\nLá você encontra locais ligados aos Dreamers e rotas que se conectam a áreas cruciais do enredo. O clima é contemplativo mas tenso: inimigos e armadilhas pontuam o caminho e há passagens que revelam segredos sobre eventos passados em Hallownest.\n\nExplorar a Terra do Descanso recompensa com conhecimento narrativo e progressão em linhas principais da história.",
         bosses: [],
+        npcs: [
+            {
+                name: "Vidente",
+                description:
+                    "A Vidente é uma anciã sábia da tribo dos Louva-a-Deus das Mariposas, encontrada no Descanso da Rainha.\n\nEla guia o Cavaleiro no uso do Ferrão Onírico, revelando a importância dos sonhos e memórias em Hallownest. Sua missão é transmitir o legado de sua tribo antes que o esquecimento consuma tudo.",
+                image: "/imagens/NPCs/Vidente.jpg"
+            },
+        ],
         secondary: undefined
     },
+
+
     {
         id: "fog-canyon",
         name: "Cânion da Névoa",
@@ -159,6 +317,8 @@ export const AREAS: Area[] = [
         bosses: [],
         secondary: undefined
     },
+
+
     {
         id: "queens-gardens",
         name: "Jardins da Rainha",
@@ -168,6 +328,8 @@ export const AREAS: Area[] = [
         bosses: [],
         secondary: undefined
     },
+
+
     {
         id: "ancient-basin",
         name: "Bacia Antiga",
@@ -177,6 +339,8 @@ export const AREAS: Area[] = [
         bosses: [],
         secondary: undefined
     },
+
+
     {
         id: "abyss",
         name: "O Abismo",
@@ -187,6 +351,8 @@ export const AREAS: Area[] = [
         bosses: [],
         secondary: undefined
     },
+
+
     {
         id: "howling-cliffs",
         name: "Penhascos Uivantes",
@@ -194,8 +360,18 @@ export const AREAS: Area[] = [
         map: "/imagens/Mapas/Penhascos-mapa.jpg",
         description: "Os Penhascos Uivantes são extensões rochosas e ventosas que se estendem para o exterior do reino, com correntes de ar fortes e seções que testam a travessia.\n\nO terreno é mais aberto em comparação com cavernas internas, com longos saltos, inimigos voadores e pontos de observação que revelam grandes porções do mapa. Há rotas alternativas e plataformas que, quando bem usadas, permitem atalhos valiosos para outras regiões.\n\nA sensação de escala e a presença de riscos por queda tornam esta área memorável tanto pelo desafio quanto pelo design paisagístico.",
         bosses: [],
+        npcs: [
+            {
+                name: "Mato",
+                description:
+                    "Mato é um mestre espadachim dedicado e sereno, irmão de Oro.\n\nEle valoriza disciplina, foco e paciência, oferecendo instruções valiosas em artes marciais e técnicas refinadas de combate. Conversar com Mato pode revelar segredos sobre estilos de luta esquecidos.",
+                image: "/imagens/NPCs/Mato.jpg"
+            }
+        ],
         secondary: undefined
     },
+
+
     {
         id: "kingdoms-edge",
         name: "Borda do Reino",
@@ -203,8 +379,18 @@ export const AREAS: Area[] = [
         map: "/imagens/Mapas/Borda-mapa.jpg",
         description: "A Borda do Reino é um território acidentado com abismos, pontes suspensas e inimigos mais agressivos — uma zona que sinaliza a aproximação das partes finais do jogo.\n\nO ambiente aqui é escarpado e punitivo: quedas fatais, inimigos com projéteis e encontros que exigem timing e domínio de movimento. É também uma área de passagem para localidades secretas e para confrontos que colocam à prova as habilidades acumuladas do jogador ao longo da aventura.\n\nPara os exploradores, a Borda guarda segredos que recompensam paciência e observação do nível.",
         bosses: [],
+        npcs: [
+            {
+                name: "Oro",
+                description:
+                    "Oro é um guerreiro orgulhoso e de temperamento forte, sempre em busca de aprimorar suas habilidades.\n\nEle pode oferecer treinamentos de combate e desafios únicos para jogadores que desejam dominar técnicas de luta avançadas. Apesar de sua postura rígida, Oro respeita aqueles que demonstram verdadeira determinação.",
+                image: "/imagens/NPCs/Oro.jpg"
+            },
+        ],
         secondary: undefined
     },
+
+
     {
         id: "the-hive",
         name: "A Colmeia",
@@ -214,6 +400,8 @@ export const AREAS: Area[] = [
         bosses: [],
         secondary: undefined
     },
+
+
     {
         id: "deepnest",
         name: "Ninho Profundo",
@@ -223,6 +411,8 @@ export const AREAS: Area[] = [
         bosses: [],
         secondary: undefined
     },
+
+
     {
         id: "blue-lake",
         name: "Lago Azul",
@@ -231,8 +421,11 @@ export const AREAS: Area[] = [
         description:
             "O Lago Azul (Blue Lake / Lake of Unn) é uma enseada calma e luminosa localizada como sub-área do Greenpath.\n\nA água reflete minerais azulados e cria uma atmosfera serena — ao mesmo tempo esconde segredos e caminhos submersos. Pequenas cavernas e bordas escorregadias convidam a exploração com atenção ao ambiente.\n\nÉ também o local ligado a Unn, uma criatura aquática peculiar que recompensa o jogador com itens ou pequenas interações quando encontrada. Boa para relaxar entre áreas mais hostis e para buscar segredos de exploração.",
         bosses: [],
-        secondary: true
+        secondary: true,
+        parent: "resting-grounds",
     },
+
+
     {
         id: "mantis-village",
         name: "Vila dos Louva-a-Deus",
@@ -248,8 +441,11 @@ export const AREAS: Area[] = [
                 image: "/imagens/Bosses/Lords.jpg"
             }
         ],
-        secondary: true
+        secondary: true,
+        parent: "fungal-wastes",
     },
+
+
     {
         id: "coliseum-of-fools",
         name: "Coliseu dos Tolos",
@@ -258,8 +454,11 @@ export const AREAS: Area[] = [
         description:
             "O Coliseu dos Tolos é uma arena de combates por ondas, localizada no topo da Borda do Reino (Kingdom's Edge).\n\nFunciona como um desafio de sobrevivência em testes: o jogador enfrenta sequências de inimigos em arenas controladas, cada prova com regras próprias e recompensas (geo, itens, e às vezes chaves para progressão).\n\nÉ um ótimo local para treinar combate em espaço confinado e testar builds/charms contra variações de inimigos — as provas crescem em dificuldade à medida que se avança.",
         bosses: [],
-        secondary: true
+        secondary: true,
+        parent: "kingdoms-edge",
     },
+
+
     {
         id: "white-palace",
         name: "Palácio Branco",
@@ -268,8 +467,11 @@ export const AREAS: Area[] = [
         description:
             "O Palácio Branco é uma área do Dream Realm (sonho) que representa a antiga residência do Pale King — hoje dominante por desafios de plataforma extremamente exigentes.\n\nA entrada é obtida via Dream Nail (Awoken Dream Nail) em local ligado aos Kingsmoulds; o palácio é famoso por suas seções com lâminas, serras e plataformas que exigem precisão, timing e uso avançado de dash/jump/pogo.\n\nPossui subáreas notórias (como o Path of Pain) e oferece recompensas de lore e itens para quem completa seu périplo. Não é tanto uma área de chefes, mas sim de prova de habilidade.",
         bosses: [],
-        secondary: true
+        secondary: true,
+        parent: "ancient-basin",
     },
+
+
     {
         id: "godhome",
         name: "Lar dos Deuses",
@@ -278,9 +480,39 @@ export const AREAS: Area[] = [
         description:
             "O Lar dos Deuses (Godhome) é uma área especial introduzida pelo DLC Godmaster — situada no Dream Realm e dedicada a arenas de batalha e pantheons de bosses.\n\nAqui o jogador pode enfrentar versões em série de muitos chefes do jogo em desafios progressivos chamados 'Pantheon', além de áreas como a Hall of Gods. O conteúdo é orientado a combates e testes de resistência e domínio.\n\nAviso: trata-se de conteúdo de DLC (Godmaster) — contém lutas opcionais, modos difíceis e recompensas para jogadores que buscam um desafio extremo.",
         bosses: [],
-        secondary: true
-    }
-    // --- fim das entradas secundárias ---
+        secondary: true,
+        parent: "royal-waterways",
+    },
+
+
+    {
+    id: "grimm-troupe",
+    name: "Trupe do Grimm",
+    image: "/imagens/Areas/Grimm.jpg",
+    description:
+        "A Trupe do Grimm é um evento especial que aparece em Dirtmouth quando o jogador acende a Lanterna do Pesadelo nos Penhascos Uivantes.\n\nEla traz o Mestre Grimm e seus seguidores, pedindo que o cavaleiro colete Chamas do Pesadelo espalhadas por Hallownest.\n\nEsse evento transforma Dirtmouth, revelando rituais sombrios e culminando em batalhas contra Grimm e sua forma suprema: o Nightmare King Grimm.",
+    bosses: [{
+    name: "Mestre da Trupe Grimm",
+    description: "Líder carismático e enigmático da Trupe que aparece em Dirtmouth. Grimm desafia o cavaleiro como parte do ritual das Chamas do Pesadelo.\n\nSua luta combina elegância e perigo: ataques de projéteis, teletransportes rápidos e movimentos de palco que exigem leitura e precisão.",
+    image: "/imagens/Bosses/Grimm.jpg"
+},
+{
+    name: "Rei Pesadelo Grimm",
+    description: "A forma suprema e verdadeira do Mestre da Trupe. O Nightmare King Grimm é uma das batalhas mais intensas de Hollow Knight, marcada por velocidade extrema, chuva de projéteis e padrões de ataque implacáveis.\n\nÉ um teste definitivo de reflexo e resistência, sendo considerado um dos chefes mais difíceis de todo o jogo.",
+    image: "/imagens/Bosses/GrimmPesadelo.jpg"
+},],
+    secondary: true,
+    npcs: [
+        {
+    name: "Divina",
+    description:
+        "Divina é uma misteriosa integrante da Trupe do Grimm, encontrada em Dirtmouth durante o evento da trupe.\n\nCom sua aparência excêntrica e aura enigmática, ela se oferece para aprimorar o amuleto Coração Frágil, transformando-o em Coração Inquebrável — desde que o Cavaleiro pague um alto preço em Geo.\n\nApesar de sua função peculiar, pouco se revela sobre sua verdadeira natureza ou sobre seu papel dentro dos rituais da Trupe.",
+    image: "/imagens/NPCs/Divina.jpg"
+},
+    ],
+    parent: "dirtmouth",
+},
+
 
 ];
 

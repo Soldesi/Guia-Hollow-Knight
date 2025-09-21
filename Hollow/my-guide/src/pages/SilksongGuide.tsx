@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useState, type JSX } from "react";
 import { Link } from "react-router-dom";
 import AreaList from "../components/AreaList";
-import AreaDetail from "../components/AreaDatail"; 
+import AreaDetail from "../components/AreaDetail"; 
 import MapModal from "../components/ModalMap"; 
 import SILKSONG_AREAS from "../data/silksongAreas";
 import type { Area } from "../types";

@@ -16,7 +16,8 @@ export type Area = {
   image?: string;
   map?: string;
   description?: string | string[];
-  bosses?: Boss[];
-  npcs?: NPC[];
-  secondary?: boolean;   // <--- adiciona isto
+  bosses?: any[];
+  npcs?: any[];
+  secondary?: boolean;   // já existia
+  parent?: string;       // <- adicione isto
 };
