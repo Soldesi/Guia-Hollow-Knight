@@ -1,20 +1,22 @@
-// src/components/NPCModal.tsx
 import { type JSX } from "react";
-
-type NPC = {
-  name: string;
-  description: string;
-  image?: string | null;
-};
+import type { NPC } from "../types";
 
 type Props = {
   open: boolean;
-  npcs: NPC[] | undefined;
+  npcs?: NPC[];                // opcional
+  startIndex?: number;         // ADICIONADO: índice inicial opcional
   onClose: () => void;
 };
 
-export default function NPCModal({ open, npcs = [], onClose }: Props): JSX.Element | null {
+export default function NPCModal({
+  open,
+  npcs = [],
+  startIndex = 0,
+  onClose,
+}: Props): JSX.Element | null {
   if (!open) return null;
+
+  const safeIndex = Math.max(0, Math.min(startIndex, npcs.length - 1));
 
   return (
     <div className="boss-modal-overlay" role="dialog" aria-modal="true" aria-label="Informações dos NPCs">
@@ -25,10 +27,17 @@ export default function NPCModal({ open, npcs = [], onClose }: Props): JSX.Eleme
 
         <div className="npc-list">
           {npcs.map((npc, i) => (
-            <div key={i} className="npc-card">
+            <div key={i} className={`npc-card ${i === safeIndex ? "npc-card-active" : ""}`}>
               <div className="npc-image-wrap">
                 {npc?.image ? (
-                  <img src={npc.image} alt={npc?.name ?? "NPC"} />
+                  <img
+                    src={npc.image}
+                    alt={npc?.name ?? "NPC"}
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src =
+                        `https://via.placeholder.com/320x240?text=${encodeURIComponent(npc?.name ?? "NPC")}`;
+                    }}
+                  />
                 ) : (
                   <div className="npc-placeholder">Sem imagem</div>
                 )}
@@ -37,8 +46,12 @@ export default function NPCModal({ open, npcs = [], onClose }: Props): JSX.Eleme
               <div className="npc-info">
                 <h3>{npc?.name ?? "NPC"}</h3>
                 <div className="npc-desc">
-                  {npc.description
-                    ? npc.description.split("\n\n").map((p, j) => <p key={j}>{p}</p>)
+                  {npc?.description
+                    ? // normaliza para array de parágrafos
+                      (Array.isArray(npc.description)
+                        ? npc.description
+                        : String(npc.description).split("\n\n")
+                      ).map((p, j) => <p key={j}>{p}</p>)
                     : <p>Nenhuma informação disponível.</p>}
                 </div>
               </div>
